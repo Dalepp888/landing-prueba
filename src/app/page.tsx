@@ -1,3 +1,4 @@
+import CodePlayground from "../components/CodePlayground";
 import Hero from "../components/Hero";
 import Nav from "../components/Nav";
 import PricingSection from "../components/PricingSection";
@@ -15,6 +16,7 @@ export default function Home() {
         <Solutions />
         <Security />
         <PricingSection />
+        <CodePlayground />
       </main>
     </div>
   );
