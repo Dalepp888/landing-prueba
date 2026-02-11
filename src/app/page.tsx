@@ -3,8 +3,10 @@ import Hero from "../components/Hero";
 import Nav from "../components/Nav";
 import PricingSection from "../components/PricingSection";
 import Problem from "../components/Problem";
+import RadarSection from "../components/RadarSection";
 import Security from "../components/Security";
 import Solutions from "../components/Solutions";
+import TestimonialsSection from "../components/TestimonialsSection";
 
 
 export default function Home() {
@@ -17,6 +19,8 @@ export default function Home() {
         <Security />
         <PricingSection />
         <CodePlayground />
+        <TestimonialsSection />
+        <RadarSection />
       </main>
     </div>
   );
