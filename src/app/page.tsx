@@ -1,5 +1,6 @@
 import CodePlayground from "../components/CodePlayground";
 import Hero from "../components/Hero";
+import InternationalExpansion from "../components/InternationalExpansion";
 import Nav from "../components/Nav";
 import PricingSection from "../components/PricingSection";
 import Problem from "../components/Problem";
@@ -21,6 +22,7 @@ export default function Home() {
         <CodePlayground />
         <TestimonialsSection />
         <RadarSection />
+        <InternationalExpansion />
       </main>
     </div>
   );
