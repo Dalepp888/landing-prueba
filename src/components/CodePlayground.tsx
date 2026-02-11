@@ -19,17 +19,17 @@ const codeExamples: CodeExample[] = [
     label: "JAVASCRIPT",
     code: `// Instalar: npm install smscuba-otp
 
-import { SMSCuba } from 'smscuba-otp';
+import { SMSCuba } from class="text-[#00FF9D]">'smscuba-otp';
 
-const client = new SMSCuba('sk_live_...');
+const client = new SMSCuba(class="text-[#00FF9D]">'sk_live_...');
 
 async function sendOTP() {
   const result = await client.send({
-    phone: '+5352889900',
-    message: 'Tu código es: {{code}}'
+    phone: class="text-[#00FF9D]">'+5352889900',
+    message: class="text-[#00FF9D]">'Tu código es: {{code}}'
   });
-
-  console.log(\`Enviado! ID: \${result.id}\`);
+  
+  console.log('Enviado! ID: $ { result.id }');
 }`,
   },
   {
@@ -39,37 +39,32 @@ async function sendOTP() {
 
 from smscuba import SMSCuba
 
-client = SMSCuba('sk_live_...')
+client = SMSCuba(class="text-[#00FF9D]">'sk_live_...')
 
-def send_otp():
-    result = client.send(
-        phone='+5352889900',
-        message='Tu código es: {code}'
-    )
-    
-    print(f"Enviado! ID: {result.id}")
+result = client.send(
+    phone=class="text-[#00FF9D]">'+5352889900',
+    message=class="text-[#00FF9D]">'Tu código es: {{code}}'
+)
 
-send_otp()`,
+print(f"Enviado! ID: {result.id}")
+`,
   },
   {
     language: "php",
     label: "PHP",
-    code: `<?php
-// Instalar: composer require smscuba/otp
+    code: `// Instalar: composer require smscuba/otp
 
-require_once 'vendor/autoload.php';
+use SMSCuba\Client;
 
-use SMSCuba\\SMSCuba;
-
-$client = new SMSCuba('sk_live_...');
+$client = new Client(class="text-[#00FF9D]">'sk_live_...');
 
 $result = $client->send([
-    'phone' => '+5352889900',
-    'message' => 'Tu código es: {{code}}'
+    class="text-[#00FF9D]">'phone' => class="text-[#00FF9D]">'+5352889900',
+    class="text-[#00FF9D]">'message' => class="text-[#00FF9D]">'Tu código es: {{code}}'
 ]);
 
 echo "Enviado! ID: " . $result->id;
-?>`,
+`,
   },
 ];
 
@@ -120,32 +115,6 @@ export default function CodePlayground() {
     const lines = code.split("\n");
 
     return lines.map((line, lineIndex) => {
-      let highlightedLine = line;
-
-      // Comments
-      if (line.includes("//") || line.includes("#")) {
-        const commentMatch = line.match(/(\s*)(\/\/|#)(.*)/);
-        if (commentMatch) {
-          const [_, indent, prefix, content] = commentMatch;
-          highlightedLine = `${indent}<span class="text-gray-500">${prefix}${content}</span>`;
-        }
-      }
-
-      // Keywords
-      highlightedLine = highlightedLine
-        .replace(/\b(import|from|const|async|function|await|return|new|def|class|use|echo|require_once)\b/g, '<span class="text-purple-400">$1</span>')
-        .replace(/\b(SMSCuba|sendOTP|send_otp)\b/g, '<span class="text-yellow-400">$1</span>')
-        .replace(/\b(client|result|phone|message)\b/g, '<span class="text-blue-400">$1</span>')
-        .replace(/\b(console|log|print|json|id)\b/g, '<span class="text-cyan-400">$1</span>')
-        .replace(/('.*?')|(".*?")/g, '<span class="text-emerald-400">$1$2</span>')
-        .replace(/(\+\d+)/g, '<span class="text-emerald-400">$1</span>');
-
-      // Template literals and variables
-      highlightedLine = highlightedLine
-        .replace(/\$\{([^}]+)\}/g, '<span class="text-orange-400">${$1}</span>')
-        .replace(/\{([^}]+)\}/g, '<span class="text-orange-400">{$1}</span>')
-        .replace(/\$([a-zA-Z_]+)/g, '<span class="text-blue-400">$$1</span>');
-
       return (
         <div key={lineIndex} className="flex">
           <span className="text-gray-600 select-none w-8 text-right mr-4 text-sm">
@@ -153,7 +122,7 @@ export default function CodePlayground() {
           </span>
           <span
             className="text-sm"
-            dangerouslySetInnerHTML={{ __html: highlightedLine }}
+            dangerouslySetInnerHTML={{ __html: line }}
           />
         </div>
       );
@@ -189,11 +158,10 @@ export default function CodePlayground() {
                     <button
                       key={example.language}
                       onClick={() => setActiveTab(example.language)}
-                      className={`px-4 py-2 text-xs font-semibold rounded-md transition-all ${
-                        activeTab === example.language
-                          ? "bg-emerald-500/20 text-emerald-400"
-                          : "text-gray-400 hover:text-gray-300 hover:bg-gray-800"
-                      }`}
+                      className={`px-4 py-2 text-xs font-semibold rounded-md transition-all ${activeTab === example.language
+                        ? "bg-emerald-500/20 text-emerald-400"
+                        : "text-gray-400 hover:text-gray-300 hover:bg-gray-800"
+                        }`}
                     >
                       {example.label}
                     </button>
@@ -237,13 +205,12 @@ export default function CodePlayground() {
                 {terminalSteps.slice(0, visibleSteps).map((step, index) => (
                   <div
                     key={index}
-                    className={`mb-2 ${
-                      step.type === "success"
-                        ? "text-emerald-400"
-                        : step.type === "id"
+                    className={`mb-2 ${step.type === "success"
+                      ? "text-emerald-400"
+                      : step.type === "id"
                         ? "text-blue-400"
                         : "text-gray-400"
-                    }`}
+                      }`}
                   >
                     {step.type === "success" ? (
                       <>
