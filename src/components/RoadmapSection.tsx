@@ -60,14 +60,12 @@ export default function RoadmapSection() {
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
-          // Trigger animation sequence
           timelineItems.forEach((item, index) => {
             setTimeout(() => {
               setAnimatedItems((prev) => [...prev, item.id]);
             }, index * 200);
           });
         } else {
-          // Reset when out of view
           setIsVisible(false);
           setAnimatedItems([]);
         }
@@ -89,7 +87,6 @@ export default function RoadmapSection() {
   return (
     <section ref={sectionRef} className="w-full py-20 px-4 bg-[#050505]">
       <div className="max-w-6xl mx-auto">
-        {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             El futuro de la autenticación
@@ -99,13 +96,9 @@ export default function RoadmapSection() {
           </p>
         </div>
 
-        {/* Timeline */}
         <div className="relative">
-          {/* Connecting Line Container - Desktop */}
           <div className="hidden lg:block absolute top-[60px] left-0 right-0 h-0.5 z-0">
-            {/* Gray line background */}
             <div className="absolute inset-0 bg-gray-800" />
-            {/* Green line - only until the second circle */}
             <div
               className={`absolute left-0 h-full bg-emerald-500 transition-all duration-1000 ease-out ${
                 isVisible ? "w-[33%]" : "w-0"
@@ -114,7 +107,6 @@ export default function RoadmapSection() {
             />
           </div>
 
-          {/* Timeline Items */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
             {timelineItems.map((item, index) => (
               <div
@@ -128,7 +120,6 @@ export default function RoadmapSection() {
                   transitionDelay: `${index * 150}ms`,
                 }}
               >
-                {/* Icon Circle */}
                 <div
                   className={`relative z-10 w-[120px] h-[120px] rounded-full flex items-center justify-center mb-6 transition-all duration-500 bg-[#050505] ${
                     item.isActive
@@ -144,7 +135,6 @@ export default function RoadmapSection() {
                   {item.icon}
                 </div>
 
-                {/* Year */}
                 <h3
                   className={`text-xl font-bold mb-2 ${
                     item.isActive ? "text-emerald-400" : "text-white"
@@ -153,12 +143,10 @@ export default function RoadmapSection() {
                   {item.year}
                 </h3>
 
-                {/* Title */}
                 <h4 className="text-lg font-semibold text-white mb-2">
                   {item.title}
                 </h4>
 
-                {/* Description */}
                 <p className="text-gray-500 text-sm max-w-[200px]">
                   {item.description}
                 </p>

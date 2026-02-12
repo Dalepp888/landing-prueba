@@ -1,6 +1,4 @@
 "use client";
-
-import React from "react";
 import LanguageIcon from "@mui/icons-material/Language";
 
 export default function RadarSection() {

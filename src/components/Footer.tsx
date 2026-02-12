@@ -1,6 +1,3 @@
-"use client";
-
-import React from "react";
 import Link from "next/link";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 
@@ -21,9 +18,7 @@ export default function Footer() {
   return (
     <footer className="w-full bg-black border-t border-gray-900">
       <div className="max-w-7xl mx-auto px-4 py-12">
-        {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-          {/* Brand Column */}
           <div>
             <div className="flex items-center gap-2 mb-4">
               <div className="w-10 h-10 rounded-full bg-[#00FF9D] flex items-center justify-center">
@@ -36,10 +31,9 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Product Column */}
           <div>
             <h3 className="text-white font-semibold mb-4">Producto</h3>
-            <ul className="space-y-3">
+            <ul className="space-y-1">
               {productLinks.map((link, index) => (
                 <li key={index}>
                   <Link
@@ -53,10 +47,9 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Legal Column */}
           <div>
             <h3 className="text-white font-semibold mb-4">Legal</h3>
-            <ul className="space-y-3">
+            <ul className="space-y-1">
               {legalLinks.map((link, index) => (
                 <li key={index}>
                   <Link
@@ -70,7 +63,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contact Column */}
           <div>
             <h3 className="text-white font-semibold mb-4">Contacto</h3>
             <button
@@ -85,7 +77,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Copyright */}
         <div className="pt-8 border-t border-gray-900 text-center">
           <p className="text-gray-600 text-sm">
             © 2024 SMSCuba. Todos los derechos reservados.
