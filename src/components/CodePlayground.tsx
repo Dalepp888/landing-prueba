@@ -17,33 +17,33 @@ const codeExamples: CodeExample[] = [
   {
     language: "javascript",
     label: "JAVASCRIPT",
-    code: `// Instalar: npm install smscuba-otp
+    code: `<span class="text-gray-500">// Instalar: npm install smscuba-otp</span>
 
-import { SMSCuba } from class="text-[#00FF9D]">'smscuba-otp';
+<span class="text-purple-400">import</span> { SMSCuba } <span class="text-purple-400">from</span> 'smscuba-otp';
 
-const client = new SMSCuba(class="text-[#00FF9D]">'sk_live_...');
+<span class="text-purple-400">const</span> client = <span class="text-purple-400">new</span> SMSCuba('sk_live_...');
 
-async function sendOTP() {
-  const result = await client.send({
-    phone: class="text-[#00FF9D]">'+5352889900',
-    message: class="text-[#00FF9D]">'Tu código es: {{code}}'
+<span class="text-purple-400">async function</span> sendOTP() {
+  <span class="text-purple-400">const</span> result = <span class="text-purple-400">await</span> client.send({
+    phone: '+5352889900',
+    message: 'Tu código es: {{code}}'
   });
   
-  console.log('Enviado! ID: $ { result.id }');
+  console.log('Enviado! ID: $ {result.id}');
 }`,
   },
   {
     language: "python",
     label: "PYTHON",
-    code: `# Instalar: pip install smscuba-otp
+    code: `<span class="text-gray-500"># Instalar: pip install smscuba-otp</span>
 
-from smscuba import SMSCuba
+<span class="text-purple-400">from</span> smscuba <span class="text-purple-400">import</span> SMSCuba
 
-client = SMSCuba(class="text-[#00FF9D]">'sk_live_...')
+client = SMSCuba('sk_live_...')
 
 result = client.send(
-    phone=class="text-[#00FF9D]">'+5352889900',
-    message=class="text-[#00FF9D]">'Tu código es: {{code}}'
+    phone='+5352889900',
+    message='Tu código es: {{code}}'
 )
 
 print(f"Enviado! ID: {result.id}")
@@ -52,15 +52,15 @@ print(f"Enviado! ID: {result.id}")
   {
     language: "php",
     label: "PHP",
-    code: `// Instalar: composer require smscuba/otp
+    code: `<span class="text-gray-500">// Instalar: composer require smscuba/otp</span>
 
-use SMSCuba\Client;
+<span class="text-purple-400">use</span> SMSCuba\Client;
 
-$client = new Client(class="text-[#00FF9D]">'sk_live_...');
+$client = <span class="text-purple-400">new</span> Client('sk_live_...');
 
 $result = $client->send([
-    class="text-[#00FF9D]">'phone' => class="text-[#00FF9D]">'+5352889900',
-    class="text-[#00FF9D]">'message' => class="text-[#00FF9D]">'Tu código es: {{code}}'
+    'phone' => '+5352889900',
+    'message' => 'Tu código es: {{code}}'
 ]);
 
 echo "Enviado! ID: " . $result->id;
@@ -132,9 +132,8 @@ export default function CodePlayground() {
   return (
     <section className="w-full py-20 px-4 bg-[#0a0a0a]">
       <div className="max-w-6xl mx-auto">
-        {/* Header */}
         <div className="text-center mb-16">
-          <span className="inline-block px-4 py-1.5 mb-6 text-xs font-semibold tracking-wider text-emerald-400 uppercase bg-emerald-400/10 rounded-full border border-emerald-400/20">
+          <span className="inline-block px-3 py-1 mb-6 text-[10px] font-extrabold tracking-wider text-black uppercase bg-[#00FF9D] rounded-full shadow-[0_0_5px_rgba(0,255,157,1),0_0_10px_rgba(0,255,157,0.8)]">
             Laboratorio de Integración
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
@@ -146,12 +145,9 @@ export default function CodePlayground() {
           </p>
         </div>
 
-        {/* Code Playground Container */}
         <div className="bg-[#0d1117] rounded-2xl border border-gray-800 overflow-hidden">
           <div className="flex flex-col lg:flex-row lg:h-[500px]">
-            {/* Left Side - Code Editor */}
             <div className="flex-1 border-b lg:border-b-0 lg:border-r border-gray-800 min-h-[350px] lg:min-h-0 flex flex-col">
-              {/* Tabs Header */}
               <div className="flex items-center justify-between px-4 py-3 bg-[#161b22] border-b border-gray-800">
                 <div className="flex gap-1">
                   {codeExamples.map((example) => (
@@ -180,51 +176,40 @@ export default function CodePlayground() {
                 </button>
               </div>
 
-              {/* Code Content */}
               <div className="flex-1 p-4 font-mono text-sm overflow-auto text-gray-300">
                 {renderCodeWithHighlighting(currentCode)}
               </div>
             </div>
 
-            {/* Right Side - Terminal Output */}
             <div className="flex-1 min-h-[350px] lg:min-h-0 flex flex-col">
-              {/* Terminal Header */}
               <div className="flex items-center gap-2 px-4 py-3 bg-[#161b22] border-b border-gray-800">
                 <span className="text-gray-500 text-sm">&gt;_</span>
                 <span className="text-gray-400 text-sm">Terminal Output</span>
               </div>
 
-              {/* Terminal Content */}
               <div className="flex-1 p-4 font-mono text-sm bg-[#0d1117] overflow-auto">
-                {!isRunning && visibleSteps === 0 && (
-                  <span className="text-gray-500">
+                  <span className="block text-gray-500 pb-4">
                     # Click "Run Demo" to simulate API request
                   </span>
-                )}
 
                 {terminalSteps.slice(0, visibleSteps).map((step, index) => (
                   <div
                     key={index}
-                    className={`mb-2 ${step.type === "success"
-                      ? "text-emerald-400"
-                      : step.type === "id"
-                        ? "text-blue-400"
-                        : "text-gray-400"
-                      }`}
+                    className={`mb-2 text-[#00ff88]`}
                   >
                     {step.type === "success" ? (
                       <>
-                        <span className="text-emerald-400 mr-2">☑</span>
+                        <span className="text-[#00ff88] mr-2">☑</span>
                         {step.text}
                       </>
                     ) : step.type === "id" ? (
                       <>
-                        <span className="text-gray-500 mr-2">&gt;</span>
+                        <span className="text-[#00ff88] mr-2">&gt;</span>
                         {step.text}
                       </>
                     ) : (
                       <>
-                        <span className="text-gray-500 mr-2">&gt;</span>
+                        <span className="text-[#00ff88] mr-2">&gt;</span>
                         {step.text}
                       </>
                     )}

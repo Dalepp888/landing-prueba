@@ -19,6 +19,8 @@ interface Plan {
   buttonText: string;
   isPopular?: boolean;
   isFree?: boolean;
+  isGuild?: boolean;
+  isLegend?: boolean
 }
 
 const plans: Plan[] = [
@@ -70,6 +72,7 @@ const plans: Plan[] = [
       "Usuarios Ilimitados",
     ],
     buttonText: "Desbloquear",
+    isGuild: true
   },
   {
     id: "legend",
@@ -86,6 +89,7 @@ const plans: Plan[] = [
       "Auditoría Log",
     ],
     buttonText: "Desbloquear",
+    isLegend: true
   },
 ];
 
@@ -93,9 +97,8 @@ export default function PricingSection() {
   return (
     <section className="w-full py-20 px-4 bg-[#0a0a0a]">
       <div className="max-w-7xl mx-auto">
-        {/* Header */}
         <div className="text-center mb-16">
-          <span className="inline-block px-4 py-1.5 mb-6 text-xs font-semibold tracking-wider text-emerald-400 uppercase bg-emerald-400/10 rounded-full border border-emerald-400/20">
+          <span className="inline-block px-3 py-1 mb-6 text-[10px] font-extrabold tracking-wider text-black uppercase bg-[#00FF9D] rounded-full shadow-[0_0_5px_rgba(0,255,157,1),0_0_10px_rgba(0,255,157,0.8)]">
             Select Your Plan
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
@@ -106,43 +109,46 @@ export default function PricingSection() {
           </p>
         </div>
 
-        {/* Plans Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           {plans.map((plan) => (
             <div
               key={plan.id}
-              className={`relative rounded-2xl p-6 border transition-all duration-300 hover:scale-[1.02] ${
-                plan.isPopular
-                  ? "bg-emerald-950/20 border-emerald-500/50 shadow-lg shadow-emerald-500/10"
-                  : "bg-[#141414] border-gray-800 hover:border-gray-700"
-              }`}
+              className={`relative bg-[#121218] rounded-2xl p-6 border transition-all duration-300 hover:scale-[1.02] ${plan.isPopular
+                ? "border-[#00FF9D] border-2 shadow-lg shadow-emerald-500/10 hover:bg-[#00FF9D]/20"
+                : plan.isFree
+                ? "border-gray-800 hover:bg-gray-900"
+                : plan.isGuild
+                ? "border-gray-800 hover:bg-[#162544]"
+                : plan.isLegend
+                ? "border-gray-800 hover:bg-[#3D1538]"
+                : "border-gray-800 hover:border-gray-500"
+                }`}
             >
-              {/* Popular Badge */}
               {plan.isPopular && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                  <span className="px-3 py-1 text-xs font-semibold text-white bg-emerald-500 rounded-full">
+                <div className="absolute top-[-3px] right-0">
+                  <span className="px-3 py-1 text-[10px] font-semibold text-black bg-[#00FF9D] rounded-bl-xl rounded-tr-xl">
                     MÁS POPULAR
                   </span>
                 </div>
               )}
 
-              {/* Icon */}
               <div
-                className={`w-12 h-12 rounded-xl flex items-center justify-center mb-6 ${
-                  plan.isPopular
-                    ? "bg-emerald-500/20"
-                    : "bg-gray-800"
-                }`}
+                className={`w-12 h-12 rounded-xl flex items-center justify-center mb-6 ${plan.isPopular
+                  ? "bg-[#00FF9D]"
+                  : "bg-[#1A1A24]"
+                  }`}
               >
-                {plan.icon}
+                {React.cloneElement(plan.icon, {
+                  className: plan.isPopular
+                    ? "text-black"
+                    : "text-white"
+                })}
               </div>
 
-              {/* Level & Name */}
               <p className="text-gray-400 text-sm font-medium mb-1">
                 {plan.level}: {plan.name}
               </p>
 
-              {/* Price */}
               <div className="mb-2">
                 <span className="text-3xl md:text-4xl font-bold text-white">
                   {plan.price}
@@ -150,7 +156,6 @@ export default function PricingSection() {
               </div>
               <p className="text-gray-500 text-sm mb-6">{plan.unitPrice}</p>
 
-              {/* Features */}
               <ul className="space-y-3 mb-8">
                 {plan.features.map((feature, index) => (
                   <li key={index} className="flex items-start gap-3">
@@ -163,13 +168,11 @@ export default function PricingSection() {
                 ))}
               </ul>
 
-              {/* Button */}
               <button
-                className={`w-full py-3 px-4 rounded-lg font-semibold text-sm transition-all duration-200 ${
-                  plan.isPopular
-                    ? "bg-emerald-500 text-white hover:bg-emerald-600"
-                    : "bg-transparent text-emerald-400 border border-emerald-500 hover:bg-emerald-500/10"
-                }`}
+                className={`w-full py-3 px-4 rounded-lg font-semibold text-sm transition-all duration-200 ${plan.isPopular
+                  ? "px-3 py-1 mb-6 text-lg font-extrabold text-black bg-[#00FF9D] rounded-full shadow-[0_0_2px_rgba(0,255,157,1),0_0_4px_rgba(0,255,157,0.8)]"
+                  : "bg-transparent text-emerald-400 border border-emerald-500 hover:bg-emerald-500/10"
+                  }`}
               >
                 {plan.buttonText}
               </button>
@@ -177,17 +180,16 @@ export default function PricingSection() {
           ))}
         </div>
 
-        {/* Secret Level */}
-        <div className="max-w-3xl mx-auto">
-          <div className="bg-gradient-to-r from-emerald-950/30 via-gray-900/50 to-emerald-950/30 border border-emerald-500/20 rounded-2xl p-8 text-center">
+        <div className="max-w-4xl mx-auto group cursor-pointer">
+          <div className="relative bg-gradient-to-r from-purple-950/20 via-gray-900/40 to-purple-950/20 border border-purple-500/20 rounded-2xl p-6 text-center transition-all duration-300 group-hover:from-purple-950/30 group-hover:via-gray-900/45 group-hover:to-purple-950/30 group-hover:border-purple-500/30 group-hover:shadow-[0_0_15px_rgba(168,85,247,0.12)]">
             <div className="flex items-center justify-center gap-2 mb-3">
-              <StarIcon className="text-yellow-500" sx={{ fontSize: 20 }} />
-              <h3 className="text-xl font-bold text-white">
+              <StarIcon className="text-yellow-600/50 group-hover:text-yellow-500 transition-colors duration-300" sx={{ fontSize: 20 }} />
+              <h3 className="text-xl font-bold text-white/70 group-hover:text-white transition-colors duration-300">
                 Nivel Secreto: Personalizado
               </h3>
-              <StarIcon className="text-yellow-500" sx={{ fontSize: 20 }} />
+              <StarIcon className="text-yellow-600/50 group-hover:text-yellow-500 transition-colors duration-300" sx={{ fontSize: 20 }} />
             </div>
-            <p className="text-gray-400">
+            <p className="text-gray-500/70 group-hover:text-gray-300 transition-colors duration-300">
               ¿Necesitas millones de envíos? Desbloquea tarifas mayoristas y soporte dedicado.
             </p>
           </div>
