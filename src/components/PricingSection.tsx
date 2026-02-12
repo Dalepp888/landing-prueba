@@ -14,7 +14,7 @@ interface Plan {
   name: string;
   price: string;
   unitPrice: string;
-  icon: React.ReactNode;
+  icon: React.ReactElement<{ className?: string }>;
   features: string[];
   buttonText: string;
   isPopular?: boolean;
