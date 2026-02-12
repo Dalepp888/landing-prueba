@@ -97,13 +97,62 @@ export default function RoadmapSection() {
         </div>
 
         <div className="relative">
-          <div className="hidden lg:block absolute top-[60px] left-0 right-0 h-0.5 z-0">
-            <div className="absolute inset-0 bg-gray-800" />
-            <div
-              className={`absolute left-0 h-full bg-emerald-500 transition-all duration-1000 ease-out ${
-                isVisible ? "w-[33%]" : "w-0"
-              }`}
-              style={{ transitionDelay: "0ms" }}
+          <div className="hidden lg:block">
+            <div 
+              className="absolute top-[60px] h-0.5 z-0"
+              style={{
+                left: '0',
+                width: 'calc(12.5% - 70px)',
+              }}
+            >
+              <div className="absolute inset-0 bg-gray-800" />
+              <div
+                className={`absolute left-0 h-full bg-emerald-500 transition-all duration-1000 ease-out ${
+                  isVisible ? "w-full" : "w-0"
+                }`}
+              />
+            </div>
+
+            <div 
+              className="absolute top-[60px] h-0.5 z-0"
+              style={{
+                left: 'calc(12.5% + 60px)',
+                width: 'calc(25% - 120px)',
+              }}
+            >
+              <div className="absolute inset-0 bg-gray-800" />
+              <div
+                className={`absolute left-0 h-full transition-all duration-1000 ease-out ${
+                  isVisible ? "w-full" : "w-0"
+                }`}
+                style={{
+                  background: 'linear-gradient(to right, #10B981 0%, #10B981 40%, transparent 100%)'
+                }}
+              />
+            </div>
+
+            <div 
+              className="absolute top-[60px] h-0.5 bg-gray-800 z-0"
+              style={{
+                left: 'calc(37.5% + 60px)',
+                width: 'calc(25% - 120px)',
+              }}
+            />
+
+            <div 
+              className="absolute top-[60px] h-0.5 bg-gray-800 z-0"
+              style={{
+                left: 'calc(62.5% + 60px)',
+                width: 'calc(25% - 120px)',
+              }}
+            />
+
+            <div 
+              className="absolute top-[60px] h-0.5 bg-gray-800 z-0"
+              style={{
+                left: 'calc(87.5% + 60px)',
+                width: 'calc(12.5% - 60px)',
+              }}
             />
           </div>
 
