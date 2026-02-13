@@ -1,8 +1,4 @@
-const features = [
-  "Soporte Cubano",
-  "API Documentada",
-  "Setup Instantáneo",
-];
+import { features } from "../constants/CTA";
 
 export default function CTASection() {
 

@@ -2,15 +2,7 @@
 import { Plane } from 'lucide-react';
 import { Button } from '../ui/button';
 import { useEffect, useState } from 'react';
-
-const countries = [
-  { id: "1", name: "México" },
-  { id: "2", name: "España" },
-  { id: "3", name: "USA" },
-  { id: "4", name: "Colombia" },
-  { id: "5", name: "Brasil" },
-  { id: "6", name: "Canadá" },
-];
+import { countries } from '../constants/internationalE';
 
 export default function InternationalExpansion() {
 
