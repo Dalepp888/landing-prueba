@@ -183,33 +183,33 @@ export default function CodePlayground() {
 
             <div className="flex-1 min-h-[350px] lg:min-h-0 flex flex-col">
               <div className="flex items-center gap-2 px-4 py-3 bg-[#161b22] border-b border-gray-800">
-                <span className="text-gray-500 text-sm">&gt;_</span>
-                <span className="text-gray-400 text-sm">Terminal Output</span>
+                <span className="text-gray-500 text-sm font-mono">&gt;_</span>
+                <span className="text-gray-400 text-sm font-mono">Terminal Output</span>
               </div>
 
               <div className="flex-1 p-4 font-mono text-sm bg-[#0d1117] overflow-auto">
-                  <span className="block text-gray-500 pb-4">
+                  <span className="block text-gray-500 font-mono pb-4">
                     # Click "Run Demo" to simulate API request
                   </span>
 
                 {terminalSteps.slice(0, visibleSteps).map((step, index) => (
                   <div
                     key={index}
-                    className={`mb-2 text-[#00ff88]`}
+                    className={`mb-2 text-[#00ff88] font-mono`}
                   >
                     {step.type === "success" ? (
                       <>
-                        <span className="text-[#00ff88] mr-2">☑</span>
+                        <span className="text-[#00ff88] mr-2 font-mono">☑</span>
                         {step.text}
                       </>
                     ) : step.type === "id" ? (
                       <>
-                        <span className="text-[#00ff88] mr-2">&gt;</span>
+                        <span className="text-[#00ff88] mr-2 font-mono">&gt;</span>
                         {step.text}
                       </>
                     ) : (
                       <>
-                        <span className="text-[#00ff88] mr-2">&gt;</span>
+                        <span className="text-[#00ff88] mr-2 font-mono">&gt;</span>
                         {step.text}
                       </>
                     )}
