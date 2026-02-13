@@ -42,8 +42,7 @@ export default function CTASection() {
                 boxShadow: "0 0 20px rgba(0, 255, 157, 0.3)"
               }}
             >
-              <RocketIcon sx={{ fontSize: 20 }} />
-              Crear Cuenta Gratis
+             🚀 Crear Cuenta Gratis
             </button>
           </div>
         </form>

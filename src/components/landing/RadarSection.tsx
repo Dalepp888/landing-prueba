@@ -1,5 +1,9 @@
 "use client";
 import LanguageIcon from "@mui/icons-material/Language";
+import React from 'react';
+import { motion } from 'motion/react';
+import { Globe, Plane, Map } from 'lucide-react';
+import { Button } from '../ui/design-system';
 
 export default function RadarSection() {
   return (
@@ -85,6 +89,6 @@ export default function RadarSection() {
           }
         }
       `}</style>
-    </section>
+    </section >
   );
 }

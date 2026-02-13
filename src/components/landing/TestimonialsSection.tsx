@@ -1,137 +1,86 @@
-"use client";
+'use client'
+import React from 'react';
+import { motion } from 'motion/react';
+import { Quote, Star } from 'lucide-react';
+import { Card, CyberCard } from '../ui/design-system';
 
-import StarIcon from "@mui/icons-material/Star";
-import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
-
-interface Client {
-  id: string;
-  name: string;
-  category: string;
-  smsCount: string;
-  initial: string;
-}
-
-interface Testimonial {
-  id: string;
-  quote: string;
-  author: string;
-  role: string;
-  company: string;
-  initials: string;
-}
-
-const clients: Client[] = [
-  { id: "1", name: "CriptoCuba", category: "FINTECH", smsCount: "450k+", initial: "C" },
-  { id: "2", name: "TiendaHavana", category: "E-COMMERCE", smsCount: "120k+", initial: "T" },
-  { id: "3", name: "PayFacil", category: "FINTECH", smsCount: "890k+", initial: "P" },
-  { id: "4", name: "EduOnline", category: "EDUCATION", smsCount: "50k+", initial: "E" },
-  { id: "5", name: "SaludDigital", category: "HEALTH", smsCount: "410k+", initial: "S" },
-  { id: "6", name: "CubaViajes", category: "TOURISM", smsCount: "230k+", initial: "C" },
+const clients = [
+  { name: "CriptoCuba", category: "Fintech", sms: "450k+" },
+  { name: "TiendaHabana", category: "E-commerce", sms: "120k+" },
+  { name: "PayFacil", category: "Fintech", sms: "890k+" },
+  { name: "EduOnline", category: "Education", sms: "50k+" },
+  { name: "SaludDigital", category: "Health", sms: "410k+" },
+  { name: "CubaViajes", category: "Tourism", sms: "230k+" },
 ];
 
-const testimonials: Testimonial[] = [
+const testimonials = [
   {
-    id: "1",
     quote: "Pasamos de tener un 15% de fallos con proveedores internacionales a casi cero incidencias. El soporte local es un gran plus.",
     author: "Javier Díaz",
-    role: "CTO",
-    company: "CriptoCuba",
-    initials: "JD",
+    role: "CTO, CriptoCuba",
+    avatar: "JD"
   },
   {
-    id: "2",
     quote: "La integración fue ridículamente fácil. En una tarde ya teníamos todo el sistema de login migrado.",
     author: "Elena Roque",
-    role: "Lead Dev",
-    company: "PayFacil",
-    initials: "ER",
-  },
+    role: "Lead Dev, PayFacil",
+    avatar: "ER"
+  }
 ];
 
-export default function TestimonialsSection() {
+export default function SocialProof() {
   return (
-    <section className="w-full py-20 px-4 bg-[#0a0a0a]">
-      <div className="max-w-7xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-16">
-          Ellos ya protegen sus transacciones
-        </h2>
-
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-20">
-          {clients.map((client) => (
-            <div
-              key={client.id}
-              className="bg-[#111111] border border-gray-900 rounded-xl p-4 text-center hover:border-[#00FF9D]/30 hover:-translate-y-2 hover:shadow-lg transition-all duration-150"
-            >
-              <div 
-                className="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4"
-                style={{
-                  background: 'radial-gradient(circle at 30% 30%, #2a2a3a 0%, #0a0a0f 50%, #050505 100%)',
-                  boxShadow: 'inset -2px -2px 6px rgba(0,0,0,0.8), inset 2px 2px 6px rgba(255,255,255,0.05), 0 2px 4px rgba(0,0,0,0.5)'
-                }}
+    <section className="py-24 bg-[#0A0A0F] relative">
+      <div className="container mx-auto px-4">
+        
+        {/* Heroes Grid */}
+        <div className="mb-24">
+          <h2 className="text-3xl font-bold text-center text-white mb-12">Ellos ya protegen sus transacciones</h2>
+          
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            {clients.map((client, i) => (
+              <motion.div 
+                key={i}
+                whileHover={{ y: -5, scale: 1.05 }}
+                className="bg-[#121218] border border-[#1A1A24] p-4 rounded-xl text-center group hover:border-[#00FF9D]/30 transition-colors"
               >
-                <span className="text-gray-400 font-semibold text-lg">
-                  {client.initial}
-                </span>
-              </div>
-
-              <h3 className="text-white font-semibold mb-1">{client.name}</h3>
-
-              <p className="text-gray-500 text-xs uppercase tracking-wider mb-3">
-                {client.category}
-              </p>
-
-              <p className="text-[#00FF9D] font-semibold text-sm">{client.smsCount} SMS</p>
-            </div>
-          ))}
+                <div className="w-10 h-10 mx-auto mb-3 rounded-full bg-gradient-to-br from-gray-800 to-black flex items-center justify-center font-bold text-gray-500 group-hover:text-white transition-colors">
+                  {client.name.substring(0, 1)}
+                </div>
+                <div className="font-bold text-gray-300 text-sm mb-1">{client.name}</div>
+                <div className="text-[10px] text-gray-500 uppercase tracking-wider mb-2">{client.category}</div>
+                <div className="text-xs text-[#00FF9D] font-mono">{client.sms} SMS</div>
+              </motion.div>
+            ))}
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {testimonials.map((testimonial) => (
-            <div
-              key={testimonial.id}
-              className="bg-[#050505] border-[0.1px] border-[#00FF9D]/30 rounded-xl p-8 hover:border-[#00FF9D]/50 transition-all duration-300 relative overflow-hidden"
-              style={{
-                backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 4px, rgba(0, 255, 157, 0.05) 4px, rgba(0, 255, 157, 0.05) 5px)',
-              }}
-            >
-              <div className="flex gap-1 mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <StarIcon
-                    key={i}
-                    className="text-yellow-500"
-                    sx={{ fontSize: 20 }}
-                  />
-                ))}
-              </div>
-
-              <div className="relative mb-8">
-                <FormatQuoteIcon
-                  className="text-emerald-500/20 absolute -top-2 -right-2 transform rotate-180"
-                  sx={{ fontSize: 48 }}
-                />
-                
-                <p className="text-gray-300 text-base leading-relaxed relative z-10">
-                  &ldquo;{testimonial.quote}&rdquo;
-                </p>
-              </div>
-
-              <div className="flex items-center gap-4 pt-6 border-t border-gray-800">
-                <div className="w-10 h-10 rounded-full bg-[#1a1a1a] border border-gray-700 flex items-center justify-center">
-                  <span className="text-gray-400 font-semibold">
-                    {testimonial.initials}
-                  </span>
+        {/* Testimonials "Studio" */}
+        <div className="relative">
+          <div className="absolute inset-0 bg-gradient-to-r from-[#00FF9D]/5 to-blue-500/5 blur-3xl rounded-full opacity-20" />
+          
+          <div className="grid md:grid-cols-2 gap-8 relative z-10">
+            {testimonials.map((test, i) => (
+              <CyberCard key={i} className="bg-[#0f0f16]/80">
+                <Quote className="absolute top-6 right-6 w-8 h-8 text-[#00FF9D]/10" />
+                <div className="flex gap-1 mb-4">
+                  {[1,2,3,4,5].map(s => <Star key={s} className="w-4 h-4 text-yellow-500 fill-yellow-500" />)}
                 </div>
-
-                <div>
-                  <h4 className="text-white font-semibold">{testimonial.author}</h4>
-                  <p className="text-[#00FF9D] text-sm">
-                    {testimonial.role}, {testimonial.company}
-                  </p>
+                <p className="text-gray-300 text-lg leading-relaxed mb-6 italic">"{test.quote}"</p>
+                <div className="flex items-center gap-4 border-t border-white/5 pt-4">
+                  <div className="w-10 h-10 rounded-full bg-[#1A1A24] border border-[#2A2A35] flex items-center justify-center text-white font-bold">
+                    {test.avatar}
+                  </div>
+                  <div>
+                    <div className="font-bold text-white">{test.author}</div>
+                    <div className="text-xs text-[#00FF9D]">{test.role}</div>
+                  </div>
                 </div>
-              </div>
-            </div>
-          ))}
+              </CyberCard>
+            ))}
+          </div>
         </div>
+
       </div>
     </section>
   );

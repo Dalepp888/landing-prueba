@@ -4,9 +4,9 @@ import React from "react";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import GroupsIcon from "@mui/icons-material/Groups";
 import LanguageIcon from "@mui/icons-material/Language";
-import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
 import CheckIcon from "@mui/icons-material/Check";
 import StarIcon from "@mui/icons-material/Star";
+import ElectricBoltIcon from '@mui/icons-material/ElectricBolt';
 
 interface Plan {
   id: string;
@@ -80,7 +80,7 @@ const plans: Plan[] = [
     name: "Leyenda",
     price: "50,000 CUP",
     unitPrice: "5 CUP/sms",
-    icon: <AutoAwesomeIcon className="text-emerald-400" sx={{ fontSize: 28 }} />,
+    icon: <ElectricBoltIcon className="text-emerald-400" sx={{ fontSize: 28 }} />,
     features: [
       "10,000 SMS",
       "IP Dedicada",
@@ -95,8 +95,8 @@ const plans: Plan[] = [
 
 export default function PricingSection() {
   return (
-    <section className="w-full py-20 px-4 bg-[#0a0a0a]">
-      <div className="max-w-7xl mx-auto">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden py-20 px-4 bg-[#0a0a0a]">
+      <div className="max-w-5xl mx-auto">
         <div className="text-center mb-16">
           <span className="inline-block px-3 py-1 mb-6 text-[10px] font-extrabold tracking-wider text-black uppercase bg-[#00FF9D] rounded-full shadow-[0_0_5px_rgba(0,255,157,1),0_0_10px_rgba(0,255,157,0.8)]">
             Select Your Plan
@@ -116,16 +116,16 @@ export default function PricingSection() {
               className={`relative bg-[#121218] rounded-2xl p-6 border transition-all duration-300 hover:scale-[1.02] ${plan.isPopular
                 ? "border-[#00FF9D] border-2 shadow-lg shadow-emerald-500/10 hover:bg-[#00FF9D]/20"
                 : plan.isFree
-                ? "border-gray-800 hover:bg-gray-900"
+                ? "border-gray-800 hover:bg-gray-800"
                 : plan.isGuild
-                ? "border-gray-800 hover:bg-[#162544]"
+                ? "border-gray-800 hover:bg-[#18294A]"
                 : plan.isLegend
-                ? "border-gray-800 hover:bg-[#3D1538]"
+                ? "border-gray-800 hover:bg-[#390f33]"
                 : "border-gray-800 hover:border-gray-500"
                 }`}
             >
               {plan.isPopular && (
-                <div className="absolute top-[-3px] right-0">
+                <div className="absolute top-[-4px] right-0">
                   <span className="px-3 py-1 text-[10px] font-semibold text-black bg-[#00FF9D] rounded-bl-xl rounded-tr-xl">
                     MÁS POPULAR
                   </span>
@@ -145,22 +145,25 @@ export default function PricingSection() {
                 })}
               </div>
 
-              <p className="text-gray-400 text-sm font-medium mb-1">
+              <p className="text-white text-lg font-bold mb-1">
                 {plan.level}: {plan.name}
               </p>
 
               <div className="mb-2">
-                <span className="text-3xl md:text-4xl font-bold text-white">
+                <span className="text-2xl md:text-3xl font-bold text-white">
                   {plan.price}
                 </span>
               </div>
-              <p className="text-gray-500 text-sm mb-6">{plan.unitPrice}</p>
+              <p className="text-gray-500 text-[12px] mb-6">{plan.unitPrice}</p>
 
               <ul className="space-y-3 mb-8">
                 {plan.features.map((feature, index) => (
                   <li key={index} className="flex items-start gap-3">
                     <CheckIcon
-                      className="text-emerald-400 flex-shrink-0 mt-0.5"
+                      className={plan.isPopular
+                        ? "text-emerald-400 flex-shrink-0 mt-0.5"
+                        : "text-gray-500 flex-shrink-0 mt-0.5"
+                      }
                       sx={{ fontSize: 18 }}
                     />
                     <span className="text-gray-300 text-sm">{feature}</span>

@@ -1,205 +1,49 @@
 "use client";
+import { motion } from 'motion/react';
+import { Rocket, Fingerprint, Users, Shield } from 'lucide-react';
 
-import React, { useState, useEffect, useRef } from "react";
-import GppGoodIcon from "@mui/icons-material/GppGood";
-import FlightIcon from "@mui/icons-material/Flight";
-import FingerprintIcon from "@mui/icons-material/Fingerprint";
-import GroupsIcon from "@mui/icons-material/Groups";
-
-interface TimelineItem {
-  id: string;
-  year: string;
-  title: string;
-  description: string;
-  icon: React.ReactNode;
-  isActive?: boolean;
-}
-
-const timelineItems: TimelineItem[] = [
-  {
-    id: "1",
-    year: "2024",
-    title: "OTP Nacional Masivo",
-    description: "Infraestructura robusta para todo Cuba",
-    icon: <GppGoodIcon sx={{ fontSize: 32 }} />,
-    isActive: true,
-  },
-  {
-    id: "2",
-    year: "2024 Q4",
-    title: "OTP Internacional",
-    description: "Conexión con gateway global",
-    icon: <FlightIcon sx={{ fontSize: 32 }} />,
-    isActive: false,
-  },
-  {
-    id: "3",
-    year: "2025",
-    title: "Biometría + OTP",
-    description: "Autenticación de doble factor híbrida",
-    icon: <FingerprintIcon sx={{ fontSize: 32 }} />,
-    isActive: false,
-  },
-  {
-    id: "4",
-    year: "2026",
-    title: "Identidad Digital",
-    description: "Ecosistema unificado de identidad cubana",
-    icon: <GroupsIcon sx={{ fontSize: 32 }} />,
-    isActive: false,
-  },
+const timeline = [
+  { year: "2024", title: "OTP Nacional Masivo", desc: "Infraestructura robusta para todo Cuba", active: true, icon: Shield },
+  { year: "2024 Q4", title: "OTP Internacional", desc: "Conexión con gateway global", active: false, icon: Rocket },
+  { year: "2025", title: "Biometría + OTP", desc: "Autenticación de doble factor híbrida", active: false, icon: Fingerprint },
+  { year: "2026", title: "Identidad Digital", desc: "Ecosistema unificado de identidad cubana", active: false, icon: Users },
 ];
 
-export default function RoadmapSection() {
-  const [isVisible, setIsVisible] = useState(false);
-  const [animatedItems, setAnimatedItems] = useState<string[]>([]);
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          timelineItems.forEach((item, index) => {
-            setTimeout(() => {
-              setAnimatedItems((prev) => [...prev, item.id]);
-            }, index * 200);
-          });
-        } else {
-          setIsVisible(false);
-          setAnimatedItems([]);
-        }
-      },
-      { threshold: 0.3 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
-
+export default function VisionSection() {
   return (
-    <section ref={sectionRef} className="w-full py-20 px-4 bg-[#050505]">
-      <div className="max-w-6xl mx-auto">
+    <section className="py-24 bg-[#050508] border-t border-[#1A1A24]">
+      <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            El futuro de la autenticación
-          </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            No solo enviamos SMS, construimos la confianza digital del mañana.
-          </p>
+          <h2 className="text-3xl font-bold text-white mb-4">El futuro de la autenticación</h2>
+          <p className="text-gray-400">No solo enviamos SMS, construimos la confianza digital del mañana.</p>
         </div>
 
         <div className="relative">
-          <div className="hidden lg:block">
-            <div 
-              className="absolute top-[60px] h-0.5 z-0"
-              style={{
-                left: '0',
-                width: 'calc(12.5% - 70px)',
-              }}
-            >
-              <div className="absolute inset-0 bg-gray-800" />
-              <div
-                className={`absolute left-0 h-full bg-emerald-500 transition-all duration-1000 ease-out ${
-                  isVisible ? "w-full" : "w-0"
-                }`}
-              />
-            </div>
-
-            <div 
-              className="absolute top-[60px] h-0.5 z-0"
-              style={{
-                left: 'calc(12.5% + 60px)',
-                width: 'calc(25% - 120px)',
-              }}
-            >
-              <div className="absolute inset-0 bg-gray-800" />
-              <div
-                className={`absolute left-0 h-full transition-all duration-1000 ease-out ${
-                  isVisible ? "w-full" : "w-0"
-                }`}
-                style={{
-                  background: 'linear-gradient(to right, #10B981 0%, #10B981 40%, transparent 100%)'
-                }}
-              />
-            </div>
-
-            <div 
-              className="absolute top-[60px] h-0.5 bg-gray-800 z-0"
-              style={{
-                left: 'calc(37.5% + 60px)',
-                width: 'calc(25% - 120px)',
-              }}
-            />
-
-            <div 
-              className="absolute top-[60px] h-0.5 bg-gray-800 z-0"
-              style={{
-                left: 'calc(62.5% + 60px)',
-                width: 'calc(25% - 120px)',
-              }}
-            />
-
-            <div 
-              className="absolute top-[60px] h-0.5 bg-gray-800 z-0"
-              style={{
-                left: 'calc(87.5% + 60px)',
-                width: 'calc(12.5% - 60px)',
-              }}
-            />
+          {/* Timeline Line */}
+          <div className="absolute top-12 left-0 w-full h-0.5 bg-[#1A1A24] hidden md:block">
+            <div className="h-full bg-gradient-to-r from-[#00FF9D] to-transparent w-1/3" />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
-            {timelineItems.map((item, index) => (
-              <div
-                key={item.id}
-                className={`flex flex-col items-center text-center transition-all duration-500 transform ${
-                  animatedItems.includes(item.id)
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-8"
-                }`}
-                style={{
-                  transitionDelay: `${index * 150}ms`,
-                }}
+          <div className="grid md:grid-cols-4 gap-8 relative z-10">
+            {timeline.map((item, i) => (
+              <motion.div 
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.2 }}
+                className={`group ${item.active ? 'opacity-100' : 'opacity-50 hover:opacity-100 transition-opacity'}`}
               >
-                <div
-                  className={`relative z-10 w-[120px] h-[120px] rounded-full flex items-center justify-center mb-6 transition-all duration-500 bg-[#050505] ${
-                    item.isActive
-                      ? "border-4 border-emerald-400 text-emerald-400"
-                      : "border-4 border-gray-800 text-gray-600"
-                  }`}
-                  style={{
-                    backgroundColor: item.isActive
-                      ? "rgba(16, 185, 129, 0.1)"
-                      : "transparent",
-                  }}
-                >
-                  {item.icon}
+                <div className={`w-24 h-24 mx-auto mb-6 rounded-full border-4 flex items-center justify-center bg-[#050508] transition-colors relative ${item.active ? 'border-[#00FF9D] text-[#00FF9D]' : 'border-[#1A1A24] text-gray-600 group-hover:border-gray-500'}`}>
+                  {item.active && <div className="absolute inset-0 bg-[#00FF9D]/20 rounded-full animate-ping" />}
+                  <item.icon className="w-8 h-8" />
                 </div>
-
-                <h3
-                  className={`text-xl font-bold mb-2 ${
-                    item.isActive ? "text-emerald-400" : "text-white"
-                  }`}
-                >
-                  {item.year}
-                </h3>
-
-                <h4 className="text-lg font-semibold text-white mb-2">
-                  {item.title}
-                </h4>
-
-                <p className="text-gray-500 text-sm max-w-[200px]">
-                  {item.description}
-                </p>
-              </div>
+                
+                <div className="text-center">
+                  <div className={`text-xl font-bold mb-2 ${item.active ? 'text-[#00FF9D]' : 'text-white'}`}>{item.year}</div>
+                  <h3 className="text-lg font-bold text-white mb-2">{item.title}</h3>
+                  <p className="text-sm text-gray-500">{item.desc}</p>
+                </div>
+              </motion.div>
             ))}
           </div>
         </div>

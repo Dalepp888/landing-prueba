@@ -1,81 +1,127 @@
-export default function Security() {
+'use client'
+import React, { useState, useEffect } from 'react';
+import { motion } from 'motion/react';
+import { Card } from '../ui/design-system';
+
+const locations = [
+    { id: 1, x: 20, y: 40, name: "Pinar del Río", volume: "Low" },
+    { id: 2, x: 30, y: 35, name: "La Habana", volume: "High" },
+    { id: 3, x: 35, y: 38, name: "Matanzas", volume: "Med" },
+    { id: 4, x: 45, y: 45, name: "Santa Clara", volume: "Med" },
+    { id: 5, x: 55, y: 50, name: "Camagüey", volume: "Low" },
+    { id: 6, x: 70, y: 60, name: "Holguín", volume: "Med" },
+    { id: 7, x: 75, y: 65, name: "Santiago", volume: "High" },
+];
+
+export default function MapSection() {
+    const [activePulse, setActivePulse] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setActivePulse(prev => (prev + 1) % locations.length);
+        }, 800);
+        return () => clearInterval(interval);
+    }, []);
+
     return (
-        <div
-            className="bg-background-dark text-slate-100 min-h-screen flex items-center justify-center p-6 md:p-12 overflow-x-hidden">
-            <div className="fixed inset-0 grid-pattern pointer-events-none"></div>
-            <main className="relative z-10 max-w-7xl w-full">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                    <div className="lg:col-span-5 space-y-8">
-                        <div className="flex items-center space-x-3">
-                            <span className="relative flex h-3 w-3">
-                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00FF9D] opacity-75"></span>
-                                <span className="relative inline-flex rounded-full h-3 w-3 bg-[#00FF9D]"></span>
-                            </span>
-                            <span className="text-[#00FF9D] text-xs font-bold tracking-[0.2em] uppercase">
-                                Live Network Status
-                            </span>
-                        </div>
-                        <div className="space-y-2">
-                            <h1 className="!text-3xl md:text-6xl font-extrabold tracking-tight text-white leading-tight">
-                                Seguridad en <br />
-                                <span className="text-[#00FF9D]">Movimiento</span>
-                            </h1>
-                        </div>
-                        <p className="text-slate-400 text-lg leading-relaxed max-w-md">
-                            Monitorea el flujo de autenticaciones en tiempo real a través de nuestra red distribuida en toda la isla.
-                        </p>
-                        <div className="flex flex-wrap gap-4 pt-4">
-                            <div
-                                className="bg-[#0A0A0A] border border-white/5 rounded-2xl p-6 min-w-[160px] flex-1 shadow-sm">
-                                <div className="text-2xl font-bold text-white">145ms</div>
-                                <div className="text-slate-500 text-sm mt-1">Latencia Habana</div>
-                            </div>
-                            <div
-                                className="bg-[#0A0A0A] border border-white/5 rounded-2xl p-6 min-w-[160px] flex-1 shadow-sm">
-                                <div className="text-2xl font-bold text-white">99.9%</div>
-                                <div className="text-slate-500 text-sm mt-1">Uptime Nacional</div>
-                            </div>
-                        </div>
+        <section className="py-24 bg-[#050508] relative overflow-hidden">
+            <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,157,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,157,0.02)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
+
+            <div className="container mx-auto px-4 grid lg:grid-cols-3 gap-12 items-center">
+
+                <div className="lg:col-span-1 space-y-8">
+                    <div className="inline-flex items-center gap-2 text-[#00FF9D] font-mono text-xs uppercase tracking-widest animate-pulse">
+                        <span className="w-2 h-2 bg-[#00FF9D] rounded-full" />
+                        Live Network Status
                     </div>
-                    <div className="lg:col-span-7">
-                        <div
-                            className="relative bg-[#0A0A0A] border border-white/5 rounded-large p-8 md:p-12 aspect-[4/3] flex items-center justify-center overflow-hidden shadow-2xl">
-                            <svg className="w-full h-full opacity-90" viewBox="0 0 600 400">
-                                <path className="text-[#00FF9D]/20 line-glow" d="M 50 250 Q 150 150 250 220 T 450 300 T 550 350" fill="none"
-                                    stroke="currentColor" stroke-width="2"></path>
-                                <path className="text-[#00FF9D]/10" d="M 50 250 Q 100 200 200 250 T 400 350 T 550 350" fill="none"
-                                    stroke="currentColor" stroke-width="2"></path>
-                                <line className="text-[#00FF9D]/30" stroke="currentColor" stroke-dasharray="8 6" stroke-width="1.5" x1="250"
-                                    x2="500" y1="220" y2="380"></line>
-                                <circle className="fill-[#00FF9D] glow-dot" cx="60" cy="210" r="4"></circle>
-                                <circle className="fill-[#00FF9D] glow-dot" cx="100" cy="245" r="4"></circle>
-                                <circle className="fill-[#00FF9D] glow-dot" cx="130" cy="190" r="4"></circle>
-                                <circle className="fill-[#00FF9D] glow-dot" cx="160" cy="200" r="4"></circle>
-                                <circle className="fill-[#00FF9D] glow-dot" cx="190" cy="225" r="4"></circle>
-                                <circle className="fill-[#00FF9D] glow-dot" cx="230" cy="255" r="4"></circle>
-                                <circle className="fill-[#00FF9D] glow-dot" cx="280" cy="290" r="4"></circle>
-                                <circle className="fill-[#00FF9D] glow-dot" cx="290" cy="225" r="4"></circle>
-                                <circle className="fill-[#00FF9D] glow-dot" cx="360" cy="250" r="4"></circle>
-                                <circle className="fill-[#00FF9D] glow-dot" cx="390" cy="340" r="4"></circle>
-                                <circle className="fill-[#00FF9D] glow-dot" cx="430" cy="290" r="4"></circle>
-                                <circle className="fill-[#00FF9D] glow-dot" cx="435" cy="370" r="4"></circle>
-                                <circle className="fill-[#00FF9D] glow-dot" cx="475" cy="310" r="4"></circle>
-                            </svg>
-                            <div className="absolute bottom-6 left-8 md:bottom-8 md:left-12">
-                                <span
-                                    className="bg-white/5 border border-white/10 px-4 py-2 rounded-lg text-xs font-medium text-slate-400">
-                                    Live Traffic Map v2.1
-                                </span>
+                    <h2 className="text-4xl font-bold text-white">
+                        Seguridad en <br />
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00FF9D] to-emerald-600">Movimiento</span>
+                    </h2>
+                    <p className="text-gray-400">
+                        Monitorea el flujo de autenticaciones en tiempo real a través de nuestra red distribuida en toda la isla.
+                    </p>
+
+                    <div className="grid grid-cols-2 gap-4">
+                        <Card className="bg-[#121218]/50 border-white/5">
+                            <div className="text-2xl font-bold text-white mb-1">145ms</div>
+                            <div className="text-xs text-gray-500">Latencia Habana</div>
+                        </Card>
+                        <Card className="bg-[#121218]/50 border-white/5">
+                            <div className="text-2xl font-bold text-white mb-1">99.9%</div>
+                            <div className="text-xs text-gray-500">Uptime Nacional</div>
+                        </Card>
+                    </div>
+                </div>
+
+                <div className="lg:col-span-2 relative h-[400px] bg-[#0A0A0F] rounded-2xl border border-[#1A1A24] overflow-hidden shadow-2xl group">
+                    {/* Map Grid Background */}
+                    <div className="absolute inset-0 bg-[radial-gradient(#1A1A24_1px,transparent_1px)] [background-size:16px_16px] opacity-20" />
+
+                    {/* Simplified Cuba Map Visualization using SVG */}
+                    <svg viewBox="0 0 100 80" className="w-full h-full absolute inset-0 pointer-events-none drop-shadow-[0_0_10px_rgba(0,255,157,0.2)]">
+                        {/* Abstract Island Shape */}
+                        <path
+                            d="M10,45 Q20,30 30,35 T45,45 T60,50 T80,65 T90,70 L85,75 Q70,70 60,60 T40,55 T20,50 Z"
+                            fill="none"
+                            stroke="#00FF9D"
+                            strokeWidth="0.5"
+                            strokeOpacity="0.3"
+                            fillOpacity="0.05"
+                        />
+
+                        {/* Connecting Lines */}
+                        <path d="M30,35 L45,45 L75,65" stroke="#00FF9D" strokeWidth="0.2" strokeDasharray="1 1" opacity="0.4" />
+                        <path d="M30,35 L35,38 L55,50" stroke="#00FF9D" strokeWidth="0.2" strokeDasharray="1 1" opacity="0.4" />
+
+                        {locations.map((loc, i) => (
+                            <g key={loc.id}>
+                                <circle cx={loc.x} cy={loc.y} r="1" fill="#00FF9D" />
+                                {/* Ripple Effect */}
+                                {activePulse === i && (
+                                    <circle cx={loc.x} cy={loc.y} r="1" stroke="#00FF9D" strokeWidth="0.2" fill="none">
+                                        <animate attributeName="r" from="1" to="6" dur="1.5s" begin="0s" repeatCount="1" />
+                                        <animate attributeName="opacity" from="1" to="0" dur="1.5s" begin="0s" repeatCount="1" />
+                                    </circle>
+                                )}
+                            </g>
+                        ))}
+                    </svg>
+
+                    {/* Floating Markers */}
+                    {locations.map((loc, i) => (
+                        <motion.div
+                            key={loc.id}
+                            className="absolute w-auto"
+                            style={{ left: `${loc.x}%`, top: `${loc.y}%` }}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: i * 0.2 }}
+                        >
+                            <div className="relative group/marker">
+                                <div className={`absolute -top-8 left-1/2 -translate-x-1/2 bg-[#00FF9D] text-black text-[10px] font-bold px-2 py-0.5 rounded opacity-0 group-hover/marker:opacity-100 transition-opacity whitespace-nowrap pointer-events-auto`}>
+                                    {loc.name}
+                                </div>
+                                <div className="w-2 h-2 bg-[#00FF9D] rounded-full shadow-[0_0_10px_#00FF9D] cursor-pointer hover:scale-150 transition-transform" />
                             </div>
-                            <div className="absolute bottom-6 right-8 md:bottom-8 md:right-12 flex items-end space-x-1.5 opacity-80">
-                                <div className="w-1.5 h-6 bg-[#00FF9D] rounded-full"></div>
-                                <div className="w-1.5 h-10 bg-[#00FF9D] rounded-full"></div>
-                                <div className="w-1.5 h-4 bg-[#00FF9D] rounded-full"></div>
-                            </div>
+                        </motion.div>
+                    ))}
+
+                    {/* Overlay Stats */}
+                    <div className="absolute bottom-4 left-4 right-4 flex justify-between items-end pointer-events-none">
+                        <div className="bg-black/50 backdrop-blur px-3 py-1 rounded border border-white/10 text-xs text-gray-400">
+                            Live Traffic Map v2.1
+                        </div>
+                        <div className="flex gap-2">
+                            <div className="w-2 h-8 bg-green-500 rounded-sm animate-pulse" style={{ animationDelay: '0ms' }} />
+                            <div className="w-2 h-12 bg-green-500 rounded-sm animate-pulse" style={{ animationDelay: '100ms' }} />
+                            <div className="w-2 h-6 bg-green-500 rounded-sm animate-pulse" style={{ animationDelay: '200ms' }} />
+                            <div className="w-2 h-10 bg-green-500 rounded-sm animate-pulse" style={{ animationDelay: '300ms' }} />
                         </div>
                     </div>
                 </div>
-            </main>
-        </div>
-    )
+
+            </div>
+        </section>
+    );
 }

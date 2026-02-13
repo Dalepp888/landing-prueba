@@ -130,7 +130,7 @@ export default function CodePlayground() {
   };
 
   return (
-    <section className="w-full py-20 px-4 bg-[#0a0a0a]">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden py-20 px-4 bg-[#0a0a0a]">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <span className="inline-block px-3 py-1 mb-6 text-[10px] font-extrabold tracking-wider text-black uppercase bg-[#00FF9D] rounded-full shadow-[0_0_5px_rgba(0,255,157,1),0_0_10px_rgba(0,255,157,0.8)]">
@@ -145,7 +145,7 @@ export default function CodePlayground() {
           </p>
         </div>
 
-        <div className="bg-[#0d1117] rounded-2xl border border-gray-800 overflow-hidden">
+        <div className="bg-[#0d1117] rounded-2xl border border-gray-800 lg:w-[1000px]">
           <div className="flex flex-col lg:flex-row lg:h-[500px]">
             <div className="flex-1 border-b lg:border-b-0 lg:border-r border-gray-800 min-h-[350px] lg:min-h-0 flex flex-col">
               <div className="flex items-center justify-between px-4 py-3 bg-[#161b22] border-b border-gray-800">
@@ -155,7 +155,7 @@ export default function CodePlayground() {
                       key={example.language}
                       onClick={() => setActiveTab(example.language)}
                       className={`px-4 py-2 text-xs font-semibold rounded-md transition-all ${activeTab === example.language
-                        ? "bg-emerald-500/20 text-emerald-400"
+                        ? "bg-[#00ff9d]/20 text-[#00ff9d]"
                         : "text-gray-400 hover:text-gray-300 hover:bg-gray-800"
                         }`}
                     >
@@ -228,7 +228,7 @@ export default function CodePlayground() {
                 <button
                   onClick={handleRunDemo}
                   disabled={isRunning}
-                  className="w-full py-3 px-4 rounded-lg font-semibold text-sm transition-all duration-200 flex items-center justify-center gap-2 bg-transparent text-emerald-400 border border-emerald-500 hover:bg-emerald-500/10 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full py-3 px-4 rounded-lg font-semibold text-sm transition-all duration-200 flex items-center justify-center gap-2 bg-transparent text-emerald-400 border border-emerald-500 hover:bg-[#00ff9d] hover:text-black hover:shadow-[0_0_20px_#00ff9d] disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <PlayArrowIcon sx={{ fontSize: 18 }} />
                   {isRunning ? "RUNNING..." : "RUN DEMO"}

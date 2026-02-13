@@ -66,7 +66,7 @@ export default function FAQSection() {
                 className={`rounded-xl border transition-all duration-300 overflow-hidden ${
                   isOpen
                     ? "border-emerald-500/50 bg-[#0a0a0a]"
-                    : "border-gray-800 bg-[#0f0f0f] hover:border-gray-700"
+                    : "border-gray-900  bg-[#0f0f16] hover:border-gray-700"
                 }`}
               >
                 <button

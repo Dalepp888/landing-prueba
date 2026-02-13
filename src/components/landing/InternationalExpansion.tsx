@@ -1,4 +1,6 @@
-import FlightIcon from '@mui/icons-material/Flight';
+'use client'
+import { Plane } from 'lucide-react';
+import { Button } from '../ui/design-system'
 
 const countries = [
   { id: "1", name: "México" },
@@ -30,7 +32,7 @@ export default function InternationalExpansion() {
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
           <span className="text-white">Conectando Cuba</span>
           <br />
-          <span 
+          <span
             className="bg-gradient-to-r from-blue-400 via-purple-400 to-purple-500 bg-clip-text text-transparent"
           >
             con el Mundo
@@ -38,7 +40,7 @@ export default function InternationalExpansion() {
         </h1>
 
         <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed">
-          Muy pronto podrás enviar OTPs a +30 países desde la misma API. Sin 
+          Muy pronto podrás enviar OTPs a +30 países desde la misma API. Sin
           configuraciones extra. Sin tarifas ocultas.
         </p>
 
@@ -48,31 +50,23 @@ export default function InternationalExpansion() {
               key={country.id}
               className="flex items-center gap-2 px-5 py-3 bg-[#141414] border border-gray-800 rounded-xl hover:border-gray-700 transition-all duration-300"
             >
-              <FlightIcon 
-                className="text-blue-400" 
-                sx={{ fontSize: 18 }} 
-              />
+              <Plane className="w-3 h-3 text-blue-400 transform rotate-45" />
               <span className="text-white font-medium">{country.name}</span>
             </div>
           ))}
         </div>
 
-        <form className="max-w-xl mx-auto">
-          <div 
-            className="flex flex-col sm:flex-row gap-3 rounded-2xl border border-gray-800 transition-all duration-300 shadow-[0_0_20px_rgba(59,130,246,0.15),0_0_40px_rgba(147,51,234,0.1)] hover:shadow-[0_0_30px_rgba(59,130,246,0.35),0_0_60px_rgba(147,51,234,0.25)]"
-          >
+        <form className="max-w-md mx-auto relative group" onSubmit={(e) => e.preventDefault()}>
+          <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg opacity-20 group-hover:opacity-40 blur transition-opacity"></div>
+          <div className="relative flex bg-[#0A0A0F] rounded-lg p-1 border border-white/10">
             <input
               type="email"
               placeholder="Tu correo electrónico"
-              className="flex-1 px-6 py-4 bg-transparent text-white placeholder-gray-500 outline-none text-base rounded-xl"
-              required
+              className="flex-1 bg-transparent px-4 py-2 text-white focus:outline-none placeholder:text-gray-600"
             />
-            <button
-              type="submit"
-              className="px-8 py-2 m-1 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl transition-all duration-300 whitespace-nowrap"
-            >
+            <Button variant="secondary" className="bg-blue-600 hover:bg-blue-500 text-white border-none">
               Notificarme
-            </button>
+            </Button>
           </div>
         </form>
       </div>
