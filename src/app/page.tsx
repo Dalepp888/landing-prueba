@@ -1,16 +1,16 @@
-import CodePlayground from "../components/landing/CodePlayground";
-import CTASection from "../components/landing/CTASection";
-import FAQSection from "../components/landing/FAQSection";
-import Footer from "../components/landing/Footer";
-import Hero from "../components/landing/Hero";
-import InternationalExpansion from "../components/landing/InternationalExpansion";
-import PricingSection from "../components/landing/PricingSection";
-import RadarSection from "../components/landing/RadarSection";
-import RoadmapSection from "../components/landing/RoadmapSection";
-import Security from "../components/landing/Security";
-import Solutions from "../components/landing/ProblemSolutions";
-import TestimonialsSection from "../components/landing/TestimonialsSection";
-import Nav from "../components/landing/Nav";
+import CodePlayground from "../components/CodePlayground";
+import CTASection from "../components/CTASection";
+import FAQSection from "../components/FAQSection";
+import Footer from "../components/Footer";
+import Hero from "../components/Hero";
+import InternationalExpansion from "../components/InternationalExpansion";
+import PricingSection from "../components/PricingSection";
+import RadarSection from "../components/RadarSection";
+import RoadmapSection from "../components/RoadmapSection";
+import Security from "../components/Security";
+import Solutions from "../components/ProblemSolutions";
+import TestimonialsSection from "../components/TestimonialsSection";
+import Nav from "../components/Nav";
 
 
 export default function Home() {
