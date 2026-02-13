@@ -189,15 +189,26 @@ export default function Hero() {
                />
              </svg>
 
-             {/* Floating Card */}
-             <CyberCard className="absolute bottom-10 right-0 w-64 animate-float">
-               <div className="flex items-center gap-3 mb-2">
-                 <div className="w-2 h-2 bg-[#00FF9D] rounded-full animate-pulse"></div>
-                 <span className="text-xs text-[#00FF9D] uppercase">Verificado</span>
-               </div>
-               <div className="text-2xl font-bold text-white mb-1">3.2s</div>
-               <div className="text-xs text-gray-500">Tiempo promedio de entrega</div>
-             </CyberCard>
+              {/* Floating Card */}
+              <motion.div 
+                className="absolute bottom-10 right-0 w-64"
+                animate={{ y: [0, -20, -20, 0] }}
+                transition={{ 
+                  duration: 5, 
+                  repeat: Infinity, 
+                  ease: "easeInOut",
+                  times: [0, 0.45, 0.55, 1]
+                }}
+              >
+                <CyberCard>
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="w-2 h-2 bg-[#00FF9D] rounded-full animate-pulse"></div>
+                    <span className="text-xs text-[#00FF9D] uppercase">Verificado</span>
+                  </div>
+                  <div className="text-2xl font-bold text-white mb-1">3.2s</div>
+                  <div className="text-xs text-gray-500">Tiempo promedio de entrega</div>
+                </CyberCard>
+              </motion.div>
           </motion.div>
         </div>
       </div>
@@ -223,6 +234,7 @@ export default function Hero() {
           </motion.div>
         )}
       </AnimatePresence>
+      
     </section>
   );
 }
