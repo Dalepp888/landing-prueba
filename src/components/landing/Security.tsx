@@ -1,7 +1,7 @@
 'use client'
 import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
-import { Card } from '../ui/design-system';
+import { Card } from '../ui/card';
 
 const locations = [
     { id: 1, x: 20, y: 40, name: "Pinar del Río", volume: "Low" },

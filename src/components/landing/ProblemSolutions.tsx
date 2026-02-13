@@ -2,7 +2,8 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { AlertTriangle, TrendingDown, Clock, CheckCircle, Zap, Code, ShieldAlert, XCircle } from 'lucide-react';
-import { Card, CyberCard } from '../ui/design-system';
+import { Card } from '../ui/card';
+import { CyberCard } from '../ui/cyberCard';
 
 export default function ProblemSolution() {
     const [view, setView] = useState<'problem' | 'solution'>('problem');

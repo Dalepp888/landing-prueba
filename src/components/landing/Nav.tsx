@@ -2,51 +2,38 @@ import Link from "next/link"
 
 export default function Nav() {
     return (
-        <header
-            className="sticky top-0 m-auto z-50 text-white bg-black backdrop-blur-md px-10 py-3"
-        >
-            <div
-                className="mx-auto flex items-center justify-between whitespace-nowrap"
-            >
-                <div className="flex items-center gap-3">
-                    <div className="flex rounded-lg w-10 h-10 items-center bg-green-500 size-8 text-black">
-                        <span className="mx-auto font-bold text-lg">
-                            S
-                        </span>
+        <nav className="fixed top-0 left-0 w-full z-50 bg-[#0A0A0F]/80 backdrop-blur-md border-b border-white/5 transition-all duration-300">
+            <div className="container mx-auto px-4 h-20 flex items-center justify-between">
+                <div className="flex items-center gap-2 group cursor-pointer">
+                    <div className="w-10 h-10 bg-[#00FF9D] rounded-lg flex items-center justify-center shadow-[0_0_15px_rgba(0,255,157,0.3)] group-hover:animate-pulse-neon transition-all">
+                        <span className="font-bold text-black text-xl">S</span>
                     </div>
-                    <h2
-                        className="text-white text-lg font-bold leading-tight tracking-tight h2-nav"
+                    <div className="flex flex-col">
+                        <span className="text-xl font-bold text-white tracking-tight leading-none group-hover:text-[#00FF9D] transition-colors">SMSCuba</span>
+                        <span className="text-[10px] text-gray-500 font-mono tracking-widest uppercase">Cyber_Secure_OTP</span>
+                    </div>
+                </div>
+
+                <div className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
+                    <Link href="#" className="hover:text-[#00FF9D] transition-colors hover:shadow-[0_0_10px_#00FF9D] hover:shadow-cyan-500/50">Misión</Link>
+                    <Link href="#" className="hover:text-[#00FF9D] transition-colors">Niveles</Link>
+                    <Link href="#" className="hover:text-[#00FF9D] transition-colors">Mapa</Link>
+                    <Link href="#" className="hover:text-[#00FF9D] transition-colors">Laboratorio</Link>
+                </div>
+
+                <div className="flex items-center gap-4">
+                    <button
+                        className="hidden md:block text-sm font-bold text-gray-300 hover:text-white uppercase tracking-wider"
                     >
-                        SMSCuba
-                        <br />
-                        <span className="text-[10px] text-gray-400 font-normal">CYBER_SECURE_OTP</span>
-                    </h2>
-                </div>
-                <div className="hidden md:flex items-center gap-10">
-                    <nav className="flex items-center gap-8">
-                        <Link
-                            className="text-white text-sm font-medium hover:text-green-500 hover:shadow hover:shadow-[0_-2px_10px_rgba(56,189,248,0.6)] transition-colors"
-                            href="/">Misión</Link>
-                        <Link
-                            className="text-white text-sm font-medium hover:text-green-500 transition-colors"
-                            href="/solutions">Niveles</Link>
-                        <Link
-                            className="text-white text-sm font-medium hover:text-green-500 transition-colors"
-                            href="/tools">Mapas</Link>
-                        <Link
-                            className="text-white text-sm font-medium hover:text-green-500 transition-colors"
-                            href="/tools">Laboratorio</Link>
-                    </nav>
-                </div>
-                <div className="hidden md:flex items-center gap-10">
-                    <button className="font-bold text-sm text-gray-300 hover:text-white">
-                        LOGIN
+                        Login
                     </button>
-                    <button className="font-bold text-sm text-green-500 border border-green-500 rounded-lg px-5 py-2 bg-gray-900">
+                    <button
+                        className="bg-[#1A1A24] text-[#00FF9D] border border-[#00FF9D]/30 px-6 py-2 rounded-lg text-sm font-bold hover:bg-[#00FF9D] hover:text-black transition-all duration-300 shadow-[0_0_0_rgba(0,255,157,0)] hover:shadow-[0_0_20px_rgba(0,255,157,0.4)]"
+                    >
                         DASHBOARD
                     </button>
                 </div>
             </div>
-        </header>
+        </nav>
     )
 }

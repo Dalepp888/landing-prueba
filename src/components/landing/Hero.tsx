@@ -2,7 +2,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Play, Smartphone, Server } from 'lucide-react';
-import { Button, Badge, GlitchText, CyberCard } from '../ui/design-system';
+import { Button } from '../ui/button';
+import { Badge } from '../ui/badge';
+import { GlitchText } from '../ui/glitchText';
+import { CyberCard } from '../ui/cyberCard';
 
 // Particle Canvas Component
 const ParticleBackground = () => {

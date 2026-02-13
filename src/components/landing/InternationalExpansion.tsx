@@ -1,6 +1,7 @@
 'use client'
 import { Plane } from 'lucide-react';
-import { Button } from '../ui/design-system'
+import { Button } from '../ui/button';
+import { useEffect, useState } from 'react';
 
 const countries = [
   { id: "1", name: "México" },
@@ -13,17 +14,24 @@ const countries = [
 
 export default function InternationalExpansion() {
 
+  const [stars, setStars] = useState<{ left: string; top: string }[]>([])
+
+  useEffect(() => {
+    const generated = Array.from({ length: 80 }).map(() => ({
+      left: `${Math.random() * 100}%`,
+      top: `${Math.random() * 100}%`,
+    }))
+    setStars(generated)
+  }, [])
+
   return (
     <section className="w-full py-20 px-4 bg-[#050505] relative overflow-hidden">
       <div className="absolute inset-0">
-        {[...Array(80)].map((_, i) => (
+        {stars.map((star, i) => (
           <div
             key={i}
             className="absolute w-0.5 h-0.5 bg-white rounded-full opacity-20"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
+            style={star}
           />
         ))}
       </div>

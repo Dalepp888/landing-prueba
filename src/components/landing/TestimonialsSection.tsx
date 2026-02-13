@@ -2,7 +2,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Quote, Star } from 'lucide-react';
-import { Card, CyberCard } from '../ui/design-system';
+import { CyberCard } from '../ui/cyberCard';
 
 const clients = [
   { name: "CriptoCuba", category: "Fintech", sms: "450k+" },

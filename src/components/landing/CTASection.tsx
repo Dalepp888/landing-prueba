@@ -1,6 +1,3 @@
-"use client";
-import RocketIcon from "@mui/icons-material/Rocket";
-
 const features = [
   "Soporte Cubano",
   "API Documentada",
