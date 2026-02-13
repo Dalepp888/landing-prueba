@@ -10,10 +10,11 @@ export function cn(...inputs: ClassValue[]) {
 
 // --- Primitives ---
 
-export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'cyber';
-  size?: 'sm' | 'md' | 'lg';
-  glow?: boolean;
+export interface ButtonProps extends Omit<HTMLMotionProps<"button">, 'children'> {
+  children?: React.ReactNode
+  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'cyber'
+  size?: 'sm' | 'md' | 'lg'
+  glow?: boolean
 }
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
