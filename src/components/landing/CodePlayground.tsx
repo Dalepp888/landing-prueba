@@ -223,7 +223,6 @@ export default function CodePlayground() {
                 )}
               </div>
 
-              {/* Run Demo Button */}
               <div className="p-4 border-t border-gray-800 bg-[#161b22]">
                 <button
                   onClick={handleRunDemo}

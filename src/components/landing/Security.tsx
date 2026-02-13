@@ -55,12 +55,9 @@ export default function MapSection() {
                 </div>
 
                 <div className="lg:col-span-2 relative h-[400px] bg-[#0A0A0F] rounded-2xl border border-[#1A1A24] overflow-hidden shadow-2xl group">
-                    {/* Map Grid Background */}
                     <div className="absolute inset-0 bg-[radial-gradient(#1A1A24_1px,transparent_1px)] [background-size:16px_16px] opacity-20" />
 
-                    {/* Simplified Cuba Map Visualization using SVG */}
                     <svg viewBox="0 0 100 80" className="w-full h-full absolute inset-0 pointer-events-none drop-shadow-[0_0_10px_rgba(0,255,157,0.2)]">
-                        {/* Abstract Island Shape */}
                         <path
                             d="M10,45 Q20,30 30,35 T45,45 T60,50 T80,65 T90,70 L85,75 Q70,70 60,60 T40,55 T20,50 Z"
                             fill="none"
@@ -70,14 +67,12 @@ export default function MapSection() {
                             fillOpacity="0.05"
                         />
 
-                        {/* Connecting Lines */}
                         <path d="M30,35 L45,45 L75,65" stroke="#00FF9D" strokeWidth="0.2" strokeDasharray="1 1" opacity="0.4" />
                         <path d="M30,35 L35,38 L55,50" stroke="#00FF9D" strokeWidth="0.2" strokeDasharray="1 1" opacity="0.4" />
 
                         {locations.map((loc, i) => (
                             <g key={loc.id}>
                                 <circle cx={loc.x} cy={loc.y} r="1" fill="#00FF9D" />
-                                {/* Ripple Effect */}
                                 {activePulse === i && (
                                     <circle cx={loc.x} cy={loc.y} r="1" stroke="#00FF9D" strokeWidth="0.2" fill="none">
                                         <animate attributeName="r" from="1" to="6" dur="1.5s" begin="0s" repeatCount="1" />
@@ -88,7 +83,6 @@ export default function MapSection() {
                         ))}
                     </svg>
 
-                    {/* Floating Markers */}
                     {locations.map((loc, i) => (
                         <motion.div
                             key={loc.id}
@@ -107,7 +101,6 @@ export default function MapSection() {
                         </motion.div>
                     ))}
 
-                    {/* Overlay Stats */}
                     <div className="absolute bottom-4 left-4 right-4 flex justify-between items-end pointer-events-none">
                         <div className="bg-black/50 backdrop-blur px-3 py-1 rounded border border-white/10 text-xs text-gray-400">
                             Live Traffic Map v2.1

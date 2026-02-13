@@ -19,7 +19,6 @@ export default function VisionSection() {
         </div>
 
         <div className="relative">
-          {/* Timeline Line */}
           <div className="absolute top-12 left-0 w-full h-0.5 bg-[#1A1A24] hidden md:block">
             <div className="h-full bg-gradient-to-r from-[#00FF9D] to-transparent w-1/3" />
           </div>

@@ -10,7 +10,6 @@ export default function ProblemSolution() {
 
     return (
         <section className="py-32 bg-[#050508] relative overflow-hidden">
-            {/* Background Toggle Effect */}
             <motion.div
                 className="absolute inset-0 z-0 transition-colors duration-1000"
                 animate={{
@@ -22,7 +21,6 @@ export default function ProblemSolution() {
 
             <div className="container mx-auto px-4 relative z-10">
 
-                {/* Toggle Switch */}
                 <div className="flex justify-center mb-16">
                     <div className="bg-[#1A1A24] p-1 rounded-full flex relative">
                         <motion.div

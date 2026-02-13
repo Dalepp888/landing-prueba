@@ -33,7 +33,6 @@ export default function SocialProof() {
     <section className="py-24 bg-[#0A0A0F] relative">
       <div className="container mx-auto px-4">
         
-        {/* Heroes Grid */}
         <div className="mb-24">
           <h2 className="text-3xl font-bold text-center text-white mb-12">Ellos ya protegen sus transacciones</h2>
           
@@ -55,7 +54,6 @@ export default function SocialProof() {
           </div>
         </div>
 
-        {/* Testimonials "Studio" */}
         <div className="relative">
           <div className="absolute inset-0 bg-gradient-to-r from-[#00FF9D]/5 to-blue-500/5 blur-3xl rounded-full opacity-20" />
           

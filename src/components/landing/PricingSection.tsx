@@ -154,7 +154,7 @@ export default function PricingSection() {
                   {plan.price}
                 </span>
               </div>
-              <p className="text-gray-500 text-[12px] mb-6">{plan.unitPrice}</p>
+              <p className="text-gray-500 text-sm font-mono">{plan.unitPrice}</p>
 
               <ul className="space-y-3 mb-8">
                 {plan.features.map((feature, index) => (

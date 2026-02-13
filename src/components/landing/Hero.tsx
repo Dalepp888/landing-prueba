@@ -7,7 +7,6 @@ import { Badge } from '../ui/badge';
 import { GlitchText } from '../ui/glitchText';
 import { CyberCard } from '../ui/cyberCard';
 
-// Particle Canvas Component
 const ParticleBackground = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -40,7 +39,7 @@ const ParticleBackground = () => {
     };
 
     const draw = () => {
-      ctx.fillStyle = 'rgba(10, 10, 15, 0.3)'; // Trail effect
+      ctx.fillStyle = 'rgba(10, 10, 15, 0.3)'; 
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       
       ctx.font = '14px monospace';
@@ -55,7 +54,6 @@ const ParticleBackground = () => {
           p.char = Math.random() > 0.5 ? '1' : '0';
         }
         
-        // Randomly change char
         if (Math.random() > 0.95) {
           p.char = Math.random() > 0.5 ? '1' : '0';
         }
@@ -93,12 +91,10 @@ export default function Hero() {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       <ParticleBackground />
       
-      {/* Vignette & Gradients */}
       <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0F] via-transparent to-[#0A0A0F] z-0" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#0A0A0F_100%)] z-0" />
 
       <div className="container mx-auto px-4 z-10 grid lg:grid-cols-2 gap-12 items-center relative">
-        {/* Left Content */}
         <div className="space-y-8">
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
@@ -141,7 +137,6 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* Right Content - 3D Visual */}
         <div className="relative h-[500px] hidden lg:block perspective-1000">
           <motion.div 
             className="w-full h-full relative"
@@ -149,13 +144,11 @@ export default function Hero() {
             transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
             style={{ transformStyle: 'preserve-3d' }}
           >
-             {/* Central Server Node */}
              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-[#1A1A24] rounded-xl border border-[#00FF9D] shadow-[0_0_50px_rgba(0,255,157,0.2)] flex items-center justify-center z-20">
                <Server className="w-16 h-16 text-[#00FF9D]" />
                <div className="absolute inset-0 border border-[#00FF9D] rounded-xl animate-ping opacity-20"></div>
              </div>
 
-             {/* Satellite Nodes */}
              {[0, 1, 2].map((i) => (
                <motion.div
                 key={i}
@@ -164,7 +157,7 @@ export default function Hero() {
                   x: Math.cos(i * 2 + Date.now() / 1000) * 150,
                   y: Math.sin(i * 2 + Date.now() / 1000) * 150,
                 }}
-                transition={{ duration: 0 }} // Managed by animate prop updates or external tick if needed, simplifying here for CSS approx
+                transition={{ duration: 0 }} 
                 style={{
                   transform: `translate(-50%, -50%) rotate(${i * 120}deg) translateX(180px)`
                 }}
@@ -173,13 +166,11 @@ export default function Hero() {
                </motion.div>
              ))}
 
-             {/* Connection Lines (Simulated) */}
              <svg className="absolute inset-0 w-full h-full pointer-events-none z-0">
                <line x1="50%" y1="50%" x2="20%" y2="20%" stroke="#00FF9D" strokeWidth="1" strokeOpacity="0.2" />
                <line x1="50%" y1="50%" x2="80%" y2="80%" stroke="#00FF9D" strokeWidth="1" strokeOpacity="0.2" />
                <line x1="50%" y1="50%" x2="80%" y2="20%" stroke="#00FF9D" strokeWidth="1" strokeOpacity="0.2" />
                
-               {/* Animated Packet */}
                <motion.circle 
                  cx="50%" cy="50%" r="4" fill="#00FF9D"
                  animate={{ cx: ["50%", "80%"], cy: ["50%", "20%"], opacity: [1, 0] }}
@@ -192,7 +183,6 @@ export default function Hero() {
                />
              </svg>
 
-              {/* Floating Card */}
               <motion.div 
                 className="absolute bottom-10 right-0 w-64"
                 animate={{ y: [0, -20, -20, 0] }}
@@ -216,7 +206,6 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Demo Modal (Placeholder) */}
       <AnimatePresence>
         {showDemo && (
           <motion.div 
@@ -231,7 +220,6 @@ export default function Hero() {
             >
               <h3 className="text-2xl font-bold text-white mb-4">Demo Interactiva</h3>
               <p className="text-gray-400 mb-6">Simulación de envío de SMS en tiempo real.</p>
-              {/* Demo content would go here */}
               <Button onClick={() => setShowDemo(false)} className="w-full">Cerrar</Button>
             </motion.div>
           </motion.div>

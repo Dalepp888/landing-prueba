@@ -41,7 +41,6 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
                 className={cn(baseStyles, variants[variant], sizes[size], glowStyle, className)}
                 {...props}
             >
-                {/* Cyberpunk Scanline Effect for 'cyber' variant */}
                 {variant === 'cyber' && (
                     <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-shimmer" />
                 )}
